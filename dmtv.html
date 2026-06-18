@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>DMTv — DM Producciones</title>
+<meta name="description" content="DMTV — El contenido completo de DM Producciones. Historias de nuestros influencers y todo lo que hacemos.">
+<style>
+  :root{
+    --bg:#04030a;
+    --bg2:#0c0a17;
+    --gold:#FFB800;
+    --gold-soft:#ffd56b;
+    --red-yt:#ff0000;
+    --white:#ffffff;
+    --muted:#b9b6cf;
+    --line:rgba(255,184,0,.22);
+    --card:rgba(255,255,255,.04);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;min-height:100vh;}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  .topbar{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(10px);background:rgba(4,3,10,.7);border-bottom:1px solid var(--line);}
+  .topbar-inner{max-width:1280px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .back{display:inline-flex;align-items:center;gap:8px;color:var(--gold);font-weight:600;font-size:15px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);transition:.2s ease;}
+  .back:hover{background:rgba(255,184,0,.08);transform:translateX(-2px)}
+  .brand{font-family:'Barlow Condensed',sans-serif;font-weight:900;letter-spacing:.18em;color:var(--white);font-size:18px;}
+  .brand span{color:var(--gold)}
+
+  .bg-glow{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .bg-glow::before,.bg-glow::after{content:"";position:absolute;border-radius:50%;filter:blur(120px);opacity:.32;}
+  .bg-glow::before{width:520px;height:520px;background:#FFB800;top:-80px;left:-140px;}
+  .bg-glow::after{width:620px;height:620px;background:#7a3cff;bottom:-180px;right:-160px;opacity:.20;}
+
+  /* HERO */
+  .hero{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:50px 22px 30px;text-align:center;}
+  .eyebrow{display:inline-block;color:var(--gold);font-weight:700;letter-spacing:.28em;font-size:13px;text-transform:uppercase;border:1px solid var(--line);padding:8px 16px;border-radius:999px;background:rgba(255,184,0,.05);margin-bottom:18px;}
+  .logo-wrap{display:flex;justify-content:center;margin:8px auto 14px;filter:drop-shadow(0 30px 60px rgba(255,184,0,.35));}
+  .logo-wrap img{width:100%;max-width:380px;height:auto;display:block;animation:float 4s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(28px,4vw,46px);line-height:1.1;margin:0 0 14px;color:var(--white);}
+  .hero h1 span{color:var(--gold);font-style:italic;}
+  .sub{color:var(--muted);font-size:clamp(15px,1.6vw,18px);max-width:720px;margin:0 auto;}
+  .divider{width:64px;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px auto 0;border-radius:3px;}
+
+  /* YT CTA (top) */
+  .yt-row{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:22px 22px 0;text-align:center;}
+  .yt-btn{display:inline-flex;align-items:center;gap:12px;padding:16px 36px;border-radius:999px;background:#ff0000;color:#fff;font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:14px;box-shadow:0 18px 36px -10px rgba(255,0,0,.5);transition:.25s ease;}
+  .yt-btn:hover{transform:translateY(-2px);background:#e60000;box-shadow:0 26px 42px -10px rgba(255,0,0,.65);}
+  .yt-btn svg{width:22px;height:22px;}
+
+  /* INFO BLOCK */
+  .info{position:relative;z-index:1;max-width:1100px;margin:50px auto 0;padding:0 22px 30px;}
+  .info-card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:48px 44px;backdrop-filter:blur(8px);}
+  .info-card h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(32px,4vw,48px);line-height:1.05;margin:0 0 22px;color:var(--white);text-align:center;}
+  .info-card h2 span{color:var(--gold)}
+  .info-card p{color:#d8d4ec;font-size:17px;line-height:1.75;margin:0 0 16px;max-width:760px;margin-left:auto;margin-right:auto;text-align:center;}
+  .info-card p b{color:#fff;font-weight:600}
+  .info-card p .gold{color:var(--gold);font-weight:600;}
+  .info-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:26px;}
+  .tag-pill{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--gold);border:1px solid var(--line);padding:6px 12px;border-radius:999px;background:rgba(255,184,0,.04);}
+
+  /* GALLERY */
+  .gallery-section{position:relative;z-index:1;max-width:1280px;margin:40px auto 0;padding:0 22px 30px;}
+  .gallery-section-header{text-align:center;margin-bottom:30px;}
+  .gallery-section-header .eyebrow{margin-bottom:14px;}
+  .gallery-section-header h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(34px,5vw,56px);line-height:1;margin:0;color:var(--white);}
+  .gallery-section-header h2 span{color:var(--gold)}
+
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .ph-card{aspect-ratio:1242/1538;border-radius:18px;background:linear-gradient(135deg,#1a1530 0%,#0a0814 60%,#241733 100%);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:.3s ease;}
+  .ph-card:hover{border-color:rgba(255,184,0,.45);transform:translateY(-4px)}
+  .ph-card .ph-inner{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;text-align:center;padding:10px;}
+  .ph-card .ph-inner svg{width:28px;height:28px;opacity:.55;}
+  .ph-card .ph-num{position:absolute;top:10px;left:12px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:42px;line-height:1;color:rgba(255,184,0,.18);}
+
+  /* CTA bottom */
+  .cta{position:relative;z-index:1;background:linear-gradient(180deg,rgba(255,184,0,.04),rgba(255,184,0,0));border-top:1px solid var(--line);margin-top:40px;padding:70px 22px 90px;}
+  .cta-inner{max-width:980px;margin:0 auto;text-align:center;}
+  .cta h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(40px,6vw,72px);line-height:.9;margin:0 0 8px;background:linear-gradient(180deg,#fff,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .cta .sub-cta{color:var(--muted);font-size:17px;max-width:620px;margin:0 auto 32px;}
+  .cta-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:32px;}
+  .ccard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 18px;display:flex;flex-direction:column;align-items:center;gap:10px;transition:.3s ease;}
+  .ccard:hover{transform:translateY(-3px);border-color:rgba(255,184,0,.5);background:rgba(255,184,0,.05)}
+  .ccard .ico{width:48px;height:48px;border-radius:50%;background:rgba(255,184,0,.12);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--gold);}
+  .ccard .ico svg{width:22px;height:22px}
+  .ccard .ttl{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .ccard .val{font-size:16px;color:var(--white);font-weight:600;word-break:break-word;text-align:center}
+  .cta-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;border-radius:999px;background:linear-gradient(180deg,var(--gold),#e09a00);color:#1a1305;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:14px;box-shadow:0 14px 30px -8px rgba(255,184,0,.5);transition:.2s ease;}
+  .cta-btn:hover{transform:translateY(-2px);box-shadow:0 22px 40px -8px rgba(255,184,0,.6);}
+
+  footer{border-top:1px solid var(--line);padding:24px 22px;text-align:center;color:var(--muted);font-size:13px;background:#020107;position:relative;z-index:1;}
+  footer b{color:var(--gold)}
+
+  /* MOBILE */
+  @media (max-width:900px){
+    .gallery-grid{grid-template-columns:repeat(3,1fr);}
+    .logo-wrap img{max-width:280px}
+  }
+  @media (max-width:600px){
+    .hero{padding:36px 18px 18px}
+    .topbar-inner{padding:12px 16px}
+    .brand{font-size:14px;letter-spacing:.16em}
+    .back{font-size:13px;padding:7px 12px}
+    .logo-wrap img{max-width:220px}
+    .info-card{padding:30px 22px}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+    .cta-cards{grid-template-columns:1fr;gap:12px}
+    .cta{padding:50px 18px 70px}
+    .yt-btn{padding:14px 24px;font-size:13px;}
+  }
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="/" class="back" aria-label="Volver al sitio">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Volver al sitio
+    </a>
+    <div class="brand">DM <span>PRODUCCIONES</span></div>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="eyebrow">El contenido completo</span>
+  <div class="logo-wrap">
+    <img src="/uploads/dmtv-logo.gif" alt="DMTv Logo" loading="eager" fetchpriority="high">
+  </div>
+  <h1>Las historias <span>detrás de escena</span></h1>
+  <p class="sub">Producciones, entrevistas y experiencias junto a nuestros influencers y creadores.</p>
+  <div class="divider"></div>
+</section>
+
+<section class="yt-row">
+  <a href="https://youtube.com/@dmproduccionesok" target="_blank" rel="noopener" class="yt-btn">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2c-.3-1-1.1-1.8-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6c-1 .3-1.8 1.1-2.1 2.1C0 8.1 0 12 0 12s0 3.9.5 5.8c.3 1 1.1 1.8 2.1 2.1 1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+    Ver canal de YouTube
+  </a>
+</section>
+
+<section class="info">
+  <div class="info-card">
+    <h2>DMTV – El contenido <span>completo</span></h2>
+    <p>En <b>DMTV</b> vas a descubrir <b>quiénes somos</b> y todo lo que hacemos. No solo vas a escuchar nuestras historias y las de nuestros influencers, sino que también las vas a <b class="gold">vivir junto a nosotros</b> y junto a ellos.</p>
+    <p>Detrás de cada proyecto, cada experiencia y cada momento, hay algo que no siempre se ve. <b class="gold">DMTV te abre las puertas a ese mundo</b>.</p>
+    <div class="info-tags">
+      <span class="tag-pill">Entrevistas</span>
+      <span class="tag-pill">Detrás de escena</span>
+      <span class="tag-pill">Historias</span>
+      <span class="tag-pill">Influencers</span>
+      <span class="tag-pill">Producciones</span>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section">
+  <div class="gallery-section-header">
+    <span class="eyebrow">Galería</span>
+    <h2>Fotos del <span>set</span></h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="ph-card"><span class="ph-num">01</span><div class="ph-inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><path d="M21 15l-5-5L5 21"/></svg><span>Foto próximamente</span></div></div>
+    <div class="ph-card"><span class="ph-num">02</span><div class="ph-inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><path d="M21 15l-5-5L5 21"/></svg><span>Foto próximamente</span></div></div>
+    <div class="ph-card"><span class="ph-num">03</span><div class="ph-inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><path d="M21 15l-5-5L5 21"/></svg><span>Foto próximamente</span></div></div>
+    <div class="ph-card"><span class="ph-num">04</span><div class="ph-inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><path d="M21 15l-5-5L5 21"/></svg><span>Foto próximamente</span></div></div>
+    <div class="ph-card"><span class="ph-num">05</span><div class="ph-inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><path d="M21 15l-5-5L5 21"/></svg><span>Foto próximamente</span></div></div>
+    <div class="ph-card"><span class="ph-num">06</span><div class="ph-inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><path d="M21 15l-5-5L5 21"/></svg><span>Foto próximamente</span></div></div>
+    <div class="ph-card"><span class="ph-num">07</span><div class="ph-inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><path d="M21 15l-5-5L5 21"/></svg><span>Foto próximamente</span></div></div>
+    <div class="ph-card"><span class="ph-num">08</span><div class="ph-inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><path d="M21 15l-5-5L5 21"/></svg><span>Foto próximamente</span></div></div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-inner">
+    <h2>¿Querés aparecer en DMTv?</h2>
+    <p class="sub-cta">Si sos influencer, artista, creador o marca y querés ser parte de una entrevista, escribinos y armamos algo a tu medida.</p>
+    <div class="cta-cards">
+      <a class="ccard" href="https://wa.me/5493436209539?text=Hola%20DM%20Producciones%21%20Quiero%20aparecer%20en%20DMTv" target="_blank" rel="noopener">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 3.6A11.5 11.5 0 0 0 3.5 19.7L2 22l2.4-1.4A11.5 11.5 0 1 0 20 3.6Zm-8 18.4a9.4 9.4 0 0 1-4.8-1.3l-.3-.2-2.6 1 .9-2.5-.2-.3a9.5 9.5 0 1 1 7 3.3Z"/></svg></div>
+        <div class="ttl">WhatsApp</div>
+        <div class="val">+54 9 3436 20-9539</div>
+      </a>
+      <a class="ccard" href="mailto:impactodm@gmail.com">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 7 9-7"/></svg></div>
+        <div class="ttl">Email</div>
+        <div class="val">impactodm@gmail.com</div>
+      </a>
+      <a class="ccard" href="https://www.instagram.com/dmproduccionesok/" target="_blank" rel="noopener">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></div>
+        <div class="ttl">Instagram</div>
+        <div class="val">@dmproduccionesok</div>
+      </a>
+    </div>
+    <a class="cta-btn" href="https://wa.me/5493436209539?text=Hola%20DM%20Producciones%21%20Quiero%20aparecer%20en%20DMTv" target="_blank" rel="noopener">
+      Quiero aparecer en DMTv
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer>© 2026 <b>DM Producciones</b> · Service Company</footer>
+
+</body>
+</html>
