@@ -8,10 +8,19 @@
   ],
   "headers": [
     {
-      "source": "/(.*)\\.(mp4|MP4|webm)",
+      "source": "/(.*)\\.(mp4|MP4)",
       "headers": [
         { "key": "Content-Disposition", "value": "inline" },
         { "key": "Content-Type", "value": "video/mp4" },
+        { "key": "Accept-Ranges", "value": "bytes" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.webm",
+      "headers": [
+        { "key": "Content-Disposition", "value": "inline" },
+        { "key": "Content-Type", "value": "video/webm" },
         { "key": "Accept-Ranges", "value": "bytes" },
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
