@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Artistas — DM Producciones</title>
-<meta name="description" content="DM Producciones — Roster exclusivo de artistas musicales.">
+<meta name="description" content="DM Producciones — Roster de artistas musicales. Conocé a LJ, ejemplo de artista emergente que creció con nosotros.">
 <style>
   :root{
     --bg:#04030a;
@@ -19,6 +19,7 @@
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;background:var(--bg);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;min-height:100vh;}
   a{color:inherit;text-decoration:none}
+  video{display:block;max-width:100%}
 
   .topbar{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(10px);background:rgba(4,3,10,.7);border-bottom:1px solid var(--line);}
   .topbar-inner{max-width:1280px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
@@ -32,36 +33,50 @@
   .bg-glow::before{width:520px;height:520px;background:#FFB800;top:-120px;left:-140px;}
   .bg-glow::after{width:620px;height:620px;background:#7a3cff;bottom:-180px;right:-160px;opacity:.20;}
 
-  .hero{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:90px 22px 40px;text-align:center;}
+  .hero{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:80px 22px 30px;text-align:center;}
   .eyebrow{display:inline-block;color:var(--gold);font-weight:700;letter-spacing:.28em;font-size:13px;text-transform:uppercase;border:1px solid var(--line);padding:8px 16px;border-radius:999px;background:rgba(255,184,0,.05);}
   h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(56px,10vw,128px);line-height:.9;margin:18px 0 14px;background:linear-gradient(180deg,#fff 0%,#cfc7a8 60%, var(--gold) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
   .sub{color:var(--muted);font-size:clamp(15px,1.6vw,18px);max-width:720px;margin:0 auto;}
   .divider{width:64px;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px auto 0;border-radius:3px;}
 
-  .coming{position:relative;z-index:1;max-width:880px;margin:60px auto 0;padding:0 22px 90px;text-align:center;}
-  .coming .card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:60px 40px;backdrop-filter:blur(8px);}
-  .coming-icon{width:80px;height:80px;border-radius:50%;background:rgba(255,184,0,.12);border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center;margin-bottom:24px;}
-  .coming-icon svg{width:40px;height:40px;color:var(--gold)}
-  .coming h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(32px,5vw,52px);line-height:1;margin:0 0 14px;color:var(--white)}
-  .coming p{color:var(--muted);font-size:17px;line-height:1.7;max-width:540px;margin:0 auto 28px;}
-  .coming p b{color:var(--gold-soft)}
-  .cta-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:8px;}
+  /* FEATURE — LJ */
+  .feature{position:relative;z-index:1;max-width:1200px;margin:50px auto 0;padding:0 22px 80px;}
+  .feature-grid{display:grid;grid-template-columns:minmax(280px,440px) 1fr;gap:60px;align-items:center;}
+  .feature-video{position:relative;border-radius:24px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 40px 100px -30px rgba(0,0,0,.85),0 0 0 1px rgba(255,184,0,.06) inset;aspect-ratio:9/16;}
+  .feature-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+  .feature-video::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 70%,rgba(0,0,0,.4) 100%);pointer-events:none;border-radius:24px;}
+  .feature-badge{position:absolute;left:18px;top:18px;z-index:2;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);border:1px solid var(--line);padding:8px 14px;border-radius:999px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .feature-info .feat-eyebrow{color:var(--gold-soft);font-weight:600;font-size:14px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:16px;display:block;}
+  .feature-info h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(80px,12vw,180px);line-height:.88;margin:0 0 18px;letter-spacing:-.02em;background:linear-gradient(180deg,#fff,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .feature-info p{color:#d8d4ec;font-size:18px;line-height:1.65;margin:0 0 14px;max-width:520px;}
+  .feature-info p b{color:#fff;font-weight:600;}
+  .feature-info p .gold{color:var(--gold);font-weight:600;}
+  .feature-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;}
+  .tag-pill{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--gold);border:1px solid var(--line);padding:6px 12px;border-radius:999px;background:rgba(255,184,0,.04);}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;}
   .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13px;transition:.25s ease;}
   .btn-primary{background:linear-gradient(180deg,var(--gold),#e09a00);color:#1a1305;box-shadow:0 14px 30px -8px rgba(255,184,0,.45);}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 36px -8px rgba(255,184,0,.6);}
-  .btn-secondary{border:1px solid var(--line);color:var(--white)}
+  .btn-secondary{border:1px solid var(--line);color:var(--white);}
   .btn-secondary:hover{background:rgba(255,184,0,.06);border-color:var(--gold);}
 
   footer{border-top:1px solid var(--line);padding:24px 22px;text-align:center;color:var(--muted);font-size:13px;background:#020107;margin-top:auto;position:relative;z-index:1;}
-  footer b{color:var(--gold)}
+  footer b{color:var(--gold);}
 
-  @media (max-width:760px){
+  @media (max-width:900px){
+    .feature-grid{grid-template-columns:1fr;gap:30px;}
+    .feature-video{max-width:380px;margin:0 auto;width:100%;}
+    .feature-info{text-align:center;}
+    .feature-info p{margin-left:auto;margin-right:auto;}
+    .feature-tags{justify-content:center;}
+    .cta-row{justify-content:center;}
+  }
+  @media (max-width:600px){
     .topbar-inner{padding:12px 16px}
     .brand{font-size:14px;letter-spacing:.16em}
     .back{font-size:13px;padding:7px 12px}
-    .hero{padding:60px 18px 24px}
-    .coming{padding:0 18px 70px;margin-top:40px}
-    .coming .card{padding:40px 22px}
+    .hero{padding:50px 18px 18px}
+    .feature{padding:0 18px 60px;margin-top:30px}
     .cta-row{flex-direction:column;align-items:stretch}
   }
 </style>
@@ -86,19 +101,29 @@
   <div class="divider"></div>
 </section>
 
-<section class="coming">
-  <div class="card">
-    <div class="coming-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+<section class="feature">
+  <div class="feature-grid">
+    <div class="feature-video">
+      <span class="feature-badge">Caso de éxito</span>
+      <video src="/uploads/artistas/lj.mp4" controls playsinline preload="metadata" poster=""></video>
     </div>
-    <h2>Próximamente</h2>
-    <p>Estamos preparando el roster completo con <b>fotos, biografías y videos</b> de cada artista. Mientras tanto, contactanos para conocer la disponibilidad y reservar tu show.</p>
-    <div class="cta-row">
-      <a href="https://wa.me/5493436209539?text=Hola%20DM%20Producciones%2C%20quiero%20saber%20m%C3%A1s%20sobre%20los%20artistas" target="_blank" rel="noopener" class="btn btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 3.6A11.5 11.5 0 0 0 3.5 19.7L2 22l2.4-1.4A11.5 11.5 0 1 0 20 3.6Zm-8 18.4a9.4 9.4 0 0 1-4.8-1.3l-.3-.2-2.6 1 .9-2.5-.2-.3a9.5 9.5 0 1 1 7 3.3Z"/></svg>
-        Consultar artistas
-      </a>
-      <a href="/" class="btn btn-secondary">Volver al sitio</a>
+    <div class="feature-info">
+      <span class="feat-eyebrow">Artista emergente</span>
+      <h2>LJ</h2>
+      <p><b>LJ</b> es el ejemplo de un <b class="gold">artista emergente que creció con nosotros</b>. Desde sus primeros shows hasta giras nacionales, lo acompañamos en producción integral, logística y desarrollo de carrera.</p>
+      <div class="feature-tags">
+        <span class="tag-pill">Producción integral</span>
+        <span class="tag-pill">Logística</span>
+        <span class="tag-pill">Estrategia</span>
+        <span class="tag-pill">Crecimiento</span>
+      </div>
+      <div class="cta-row">
+        <a href="https://wa.me/5493436209539?text=Hola%20DM%20Producciones%2C%20quiero%20saber%20m%C3%A1s%20sobre%20artistas%20como%20LJ" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 3.6A11.5 11.5 0 0 0 3.5 19.7L2 22l2.4-1.4A11.5 11.5 0 1 0 20 3.6Z"/></svg>
+          Quiero algo así para mi marca
+        </a>
+        <a href="/" class="btn btn-secondary">Volver al sitio</a>
+      </div>
     </div>
   </div>
 </section>
