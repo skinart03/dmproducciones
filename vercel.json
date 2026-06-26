@@ -5,5 +5,16 @@
       "destination": "/uploads/HF_202~1.MP4",
       "permanent": false
     }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)\\.(mp4|MP4|webm)",
+      "headers": [
+        { "key": "Content-Disposition", "value": "inline" },
+        { "key": "Content-Type", "value": "video/mp4" },
+        { "key": "Accept-Ranges", "value": "bytes" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
   ]
-} 
+}
