@@ -38,7 +38,7 @@
   .hero{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:50px 22px 30px;text-align:center;}
   .eyebrow{display:inline-block;color:var(--gold);font-weight:700;letter-spacing:.28em;font-size:13px;text-transform:uppercase;border:1px solid var(--line);padding:8px 16px;border-radius:999px;background:rgba(255,184,0,.05);margin-bottom:18px;}
   .logo-wrap{display:flex;justify-content:center;margin:8px auto 14px;filter:drop-shadow(0 30px 60px rgba(255,184,0,.35));}
-  .logo-wrap img{width:100%;max-width:380px;height:auto;display:block;animation:float 4s ease-in-out infinite;}
+  .logo-wrap img,.logo-wrap video{width:100%;max-width:380px;height:auto;display:block;animation:float 4s ease-in-out infinite;}
   @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
   .hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(28px,4vw,46px);line-height:1.1;margin:0 0 14px;color:var(--white);}
   .hero h1 span{color:var(--gold);font-style:italic;}
@@ -135,7 +135,7 @@
 <section class="hero">
   <span class="eyebrow">El contenido completo</span>
   <div class="logo-wrap">
-    <img src="/uploads/dmtv-logo.gif" alt="DMTv Logo" loading="eager" fetchpriority="high">
+    <video src="/uploads/dmtv-logo.mp4" autoplay loop muted playsinline preload="auto" aria-label="DMTv Logo"></video>
   </div>
   <h1>Las historias <span>detrás de escena</span></h1>
   <p class="sub">Producciones, entrevistas y experiencias junto a nuestros influencers y creadores.</p>
